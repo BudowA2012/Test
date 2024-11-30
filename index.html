@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona z Animacjami i Formularzem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="intro">
+        <div class="content">
+            <h1>Witaj na mojej stronie!</h1>
+            <p>Przewiń, aby zobaczyć więcej.</p>
+            <a href="#form" class="scroll-btn">Zaczynamy!</a>
+        </div>
+    </section>
+
+    <section id="form" class="form-section">
+        <h2>Skontaktuj się ze mną</h2>
+        <form id="contactForm">
+            <label for="name">Imię:</label>
+            <input type="text" id="name" name="name" placeholder="Twoje imię" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Twój email" required>
+
+            <label for="message">Wiadomość:</label>
+            <textarea id="message" name="message" placeholder="Twoja wiadomość" required></textarea>
+
+            <button type="submit" class="submit-btn">Wyślij</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Moja Strona</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
