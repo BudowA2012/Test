@@ -1,64 +1,27 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Moje Portfolio</title>
+    <title>Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <h1>Witaj na moim portfolio!</h1>
-            <p>Jestem pasjonatem technologii i programowania. Przejrzyj moje projekty i poznaj mnie lepiej.</p>
-        </div>
-    </header>
 
-    <section id="about-me">
-        <div class="container">
-            <h2>O mnie</h2>
-            <p>Jestem front-end developerem z zamiłowaniem do tworzenia interaktywnych stron internetowych.</p>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2>Moje Projekty</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <h3>Sklep internetowy</h3>
-                    <p>W tamtym roku stwożyłem sklep intenrnetowy dla znnej fimry elektronicznej</p>
-                </div>
-                <div class="project-card">
-                    <h3>Projekt 2</h3>
-                    <p>Opis projektu 2</p>
-                </div>
-                <div class="project-card">
-                    <h3>Projekt 3</h3>
-                    <p>Opis projektu 3</p>
-                </div>
+    <div class="quiz-container">
+        <div id="quiz">
+            <h2 id="question"><strong>Pytanie</strong></h2>
+            <div id="options">
+                <!-- Opcje odpowiedzi będą wstawiane dynamicznie tutaj -->
             </div>
+            <button id="next-button">Następne</button>
         </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Kontakt</h2>
-            <p>Chcesz się ze mną skontaktować? Napisz do mnie!</p>
-            <button id="contact-button">Skontaktuj się</button>
+        <div id="result" class="hidden">
+            <h2>Twój wynik: <span id="score">0</span> / 3</h2>
+            <button id="restart-button">Zacznij od nowa</button>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Moje Portfolio. Wszystkie prawa zastrzeżone.</p>
-        </div>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
