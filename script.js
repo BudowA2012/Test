@@ -1,91 +1,89 @@
-/* style.css */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// script.js
+const questions = [
+    {
+        question: "Jak nazywał się pies felixa?",
+        options: ["1.Puszek", "2.Rufus", "3.Caban", "4.Nie było nanpisane"],
+        answer: "3.Caban"
+    },
+    {
+        question: "Jak nazywał się dyrektor szkoły, do której uczęszczali bohaterowie?",
+        options: ["1.Stefan Jamnik", "2.Juliusz Stokrota", "3.Konstancja Konstantynopolska", "4.Michalina Małolepsza"],
+        answer: "2.Juliusz Stokrota"
+    },
+    {
+        question: "Kogo spotkała Nika gdy na stoku rozpędzona wjechała w las?",
+        options: ["1.Niedzwiedzia brunatnego", "2.Niedźwiedzia Albinosa", "3.Lisa polarnego", "4.Łosia"],
+        answer: "2.Niedźwiedzia Albinosa"
+    },
+    {
+        question: "Jak brzmiało nazwisko Neta?",
+        options: ["1.Polon", "2.Mickiewicz", "3.Gong", "4.Bielecki"],
+        answer: "4.Bielecki"
+    },
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const optionsElement = document.getElementById("options");
+const nextButton = document.getElementById("next-button");
+const resultElement = document.getElementById("result");
+const scoreElement = document.getElementById("score");
+const restartButton = document.getElementById("restart-button");
+
+function loadQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+    
+    // Clear previous options
+    optionsElement.innerHTML = '';
+
+    currentQuestion.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.classList.add("option-button");
+        button.addEventListener("click", () => checkAnswer(option));
+        optionsElement.appendChild(button);
+    });
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: aliceblue;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+function checkAnswer(selectedAnswer) {
+    const correctAnswer = questions[currentQuestionIndex].answer;
+    if (selectedAnswer === correctAnswer) {
+        score++;
+    }
+    nextButton.disabled = false; // Allow to go to the next question
 }
 
-.quiz-container {
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 30px 40px;
-    width: 400px;
-    max-width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+function nextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        loadQuestion();
+        nextButton.disabled = true;
+    } else {
+        showResult();
+    }
 }
 
-h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #333;
+function showResult() {
+    document.getElementById("quiz").classList.add("hidden");
+    resultElement.classList.remove("hidden");
+    scoreElement.textContent = score;
 }
 
-#options {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
+function restartQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    document.getElementById("quiz").classList.remove("hidden");
+    resultElement.classList.add("hidden");
+    loadQuestion();
+    nextButton.disabled = true;
 }
 
-button {
-    padding: 12px;
-    background-color: #2e59d9;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+nextButton.addEventListener("click", nextQuestion);
+restartButton.addEventListener("click", restartQuiz);
 
-button:hover {
-    background-color: #2e59d9;
-}
+loadQuestion();  // Load the first question
 
-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-}
-
-.hidden {
-    display: none;
-}
-
-#next-button {
-    margin-top: 20px;
-    width: 100%;
-}
-
-#result {
-    text-align: center;
-}
-
-#restart-button {
-    background-color: #e74a3b;
-    margin-top: 20px;
-}
-
-#restart-button:hover {
-    background-color: #d35b46;
-}
-
-#score {
-    font-weight: bold;
-    font-size: 30px;
-    color: #2c3e50;
-}
 
